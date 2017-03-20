@@ -180,8 +180,9 @@ public class MainActivityDrawer extends AppCompatActivity {
             requestPermission();
         } else {
             //Toast.makeText(MainActivityDrawer.this,"Permission already granted.",Toast.LENGTH_LONG).show();
-            uploadContactsToAzure();
             syncContactsWithFirebase();
+            uploadContactsToAzure();
+
         }
     }
 
