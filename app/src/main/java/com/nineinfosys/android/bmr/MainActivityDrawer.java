@@ -33,6 +33,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.facebook.login.LoginManager;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -62,7 +65,7 @@ public class MainActivityDrawer extends AppCompatActivity {
     TextView Name,Email;
     private ListView listView;
     private FloatingActionButton fab;
-   public Toolbar toolbar;
+    public Toolbar toolbar;
     Intent intent;
 
 
@@ -81,6 +84,8 @@ public class MainActivityDrawer extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.drawermain);
+
+
 
         /**
          *Setup the DrawerLayout and NavigationView
@@ -395,6 +400,7 @@ public class MainActivityDrawer extends AppCompatActivity {
    public  void closeapp(){
        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
        alertDialogBuilder.setMessage("Are you sure you want to close App?");
+       alertDialogBuilder.setCancelable(false);
        alertDialogBuilder.setPositiveButton("Yes",
                new DialogInterface.OnClickListener() {
                    @Override
