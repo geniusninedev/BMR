@@ -308,6 +308,7 @@
             <View
                 android:layout_width="fill_parent"
                 android:layout_height="2dip"
+                android:layout_marginTop="10dp"
                 android:background="#000000" />
             <com.google.android.gms.ads.AdView
                 android:id="@+id/adViewMainPage"
