@@ -7,6 +7,7 @@ import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -189,7 +190,9 @@ public class BMRFragment extends Fragment {
         buttonCalculate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                //for hiding keyboard
+                InputMethodManager inputManager = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                inputManager.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
                 //Default case Calculation
                 if (radioGroupSex.getCheckedRadioButtonId() == -1&& radioGroupHeight.getCheckedRadioButtonId() == -1 && radioGroupWeight.getCheckedRadioButtonId() == -1) {
                     //Validation for Edittext  if is blank
@@ -207,9 +210,9 @@ public class BMRFragment extends Fragment {
                     if (radioGroupSex.getCheckedRadioButtonId() == -1 ){
                         Toast.makeText(getActivity(), "Please Select Gender", Toast.LENGTH_LONG).show();
                     } else if(radioGroupHeight.getCheckedRadioButtonId() == -1 ) {
-                        Toast.makeText(getActivity(), "Please Select Height", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getActivity(), "Please Select Height Unit", Toast.LENGTH_LONG).show();
                     }else if(radioGroupWeight.getCheckedRadioButtonId() == -1 ){
-                        Toast.makeText(getActivity(), "Please Select Weight", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getActivity(), "Please Select Weight Unit", Toast.LENGTH_LONG).show();
                     }
                     else {
                         if(radioButtonHeight.getText().toString().trim().equals("CM")) {
@@ -233,7 +236,7 @@ public class BMRFragment extends Fragment {
                                 } else if (edittextWeightInLb.getText().toString().equals("")) {
                                     edittextWeightInLb.setError("Enter Weight In Lb (Pounds)");
                                 } else {
-                                    calculateBMR(Float.parseFloat(editTextHeight.getText().toString().trim()),(float) (Float.parseFloat(editTextWeight.getText().toString().trim())* (0.454)), Float.parseFloat(editTextAge.getText().toString().trim()), radioButtonSex.getText().toString().trim());
+                                    calculateBMR(Float.parseFloat(editTextHeight.getText().toString().trim()),(float) (Float.parseFloat(edittextWeightInLb.getText().toString().trim())* (0.454)), Float.parseFloat(editTextAge.getText().toString().trim()), radioButtonSex.getText().toString().trim());
                                 }
                             }
                            else {
@@ -276,7 +279,7 @@ public class BMRFragment extends Fragment {
                                 } else if (edittextWeightInLb.getText().toString().equals("")) {
                                     edittextWeightInLb.setError("Enter Weight In Lb (Pounds)");
                                 } else {
-                                    calculateBMR((float) (((Float.parseFloat(edittextfeet.getText().toString().trim()))*(30.48))+((Float.parseFloat(edittextInch.getText().toString().trim()))*(2.54))), (float) (Float.parseFloat(editTextWeight.getText().toString().trim()) * (0.454)), Float.parseFloat(editTextAge.getText().toString().trim()), radioButtonSex.getText().toString().trim());
+                                    calculateBMR((float) (((Float.parseFloat(edittextfeet.getText().toString().trim()))*(30.48))+((Float.parseFloat(edittextInch.getText().toString().trim()))*(2.54))), (float) (Float.parseFloat(edittextWeightInLb.getText().toString().trim()) * (0.454)), Float.parseFloat(editTextAge.getText().toString().trim()), radioButtonSex.getText().toString().trim());
                                 }
                             } else {
                                 //Validation for Edittext  if is blank
