@@ -226,9 +226,18 @@
                 android:background="@color/colorPrimary"
                 android:visibility="visible" />
 
-
+            <com.google.android.gms.ads.AdView
+                android:id="@+id/adViewMainPage"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                ads:adSize="SMART_BANNER"
+                android:layout_marginTop="1dp"
+                ads:adUnitId="@string/banner_ad_unit_id">
+            </com.google.android.gms.ads.AdView>
             <View
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:layout_width="fill_parent"
                 android:layout_height="2dip"
                 android:background="#000000" />
@@ -313,15 +322,7 @@
                 android:layout_marginTop="20dp"
                 android:background="#000000" />
 
-            <com.google.android.gms.ads.AdView
-                android:id="@+id/adViewMainPage"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_alignParentBottom="true"
-                ads:adSize="LARGE_BANNER"
-                ads:adUnitId="@string/banner_ad_unit_id">
-            </com.google.android.gms.ads.AdView>
+
         </LinearLayout>
     </ScrollView>
 
