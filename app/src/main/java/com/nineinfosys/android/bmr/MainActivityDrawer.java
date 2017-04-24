@@ -51,7 +51,6 @@ import com.nineinfosys.android.bmr.Contacts.Contacts;
 import com.nineinfosys.android.bmr.DashBord.GetApp;
 
 import com.nineinfosys.android.bmr.FoodNutritionTable.FoodNutritionTable;
-import com.nineinfosys.android.bmr.Forum.ForumActivity;
 import com.nineinfosys.android.bmr.LoginActivity.Login;
 import com.squareup.okhttp.OkHttpClient;
 
@@ -89,12 +88,8 @@ public class MainActivityDrawer extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Firebase.setAndroidContext(this);
-        FacebookSdk.sdkInitialize(getApplicationContext());
 
         setContentView(R.layout.drawermain);
-
-        AppEventsLogger.activateApp(this);
 
 
         /**
@@ -120,34 +115,15 @@ public class MainActivityDrawer extends AppCompatActivity {
         /**
          * Setup click events on the Navigation View Items.
          */
-        fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //  Toast.makeText(MainActivityDrawer.this,"This Is Under Consturtion", Toast.LENGTH_LONG).show();
-                startActivity(new Intent(MainActivityDrawer.this, ForumActivity.class));
-                /*Intent intent = new Intent(MainActivity.this, NewMessageActivity.class);
-                startActivity(intent);*/
-            }
-        });
 
         mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
                 mDrawerLayout.closeDrawers();
 
-                if (menuItem.getItemId() == R.id.BMR) {
-                    FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
-                    fragmentTransaction.replace(R.id.containerView, new BMRFragment()).commit();
 
-                   /* Intent intent=new Intent(MainActivityDrawer.this, com.nineinfosys.android.weightlosscalculators.BMR.ForumMainActivity.class);
-                    startActivity(intent);*/
-                }
                 if (menuItem.getItemId() == R.id.FoodNutritionTable) {
-                    FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
-                    fragmentTransaction.replace(R.id.containerView, new FoodNutritionTable()).commit();
-                    /*Intent intent=new Intent(MainActivityDrawer.this, com.nineinfosys.android.weightlosscalculators.Weight.ForumMainActivity.class);
-                    startActivity(intent);*/
+                    startActivity(new Intent(MainActivityDrawer.this,FoodNutritionTable.class));
                 }
                 if (menuItem.getItemId() == R.id.MoreApps) {
 
